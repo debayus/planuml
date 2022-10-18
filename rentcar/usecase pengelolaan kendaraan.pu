@@ -1,0 +1,30 @@
+@startuml contoh
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Admin" as acadmin
+actor "Vendor" as acvendor
+
+rectangle "Pengelolaan Kendaraan" {
+
+    usecase "Penyerahan Kendaraan" as todo1
+    usecase "Pencatatan Data Vendor" as todo2
+    usecase "Pencatatan Data Kendaraan" as todo3
+    usecase "Maintenance Kendaraan" as todo4
+    usecase "Melihat Laporan Kendaraan" as todo5
+
+    acadmin -- todo1
+    todo1 -- acvendor
+    todo5 -- acvendor
+    acadmin -- todo4
+    acadmin -- todo5
+
+    todo2 <. todo1  : include
+    todo3 <. todo2 : include
+    todo4 .> todo3 : extent
+    todo5 .> todo4 : extent
+
+}
+
+@enduml

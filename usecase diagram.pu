@@ -16,14 +16,14 @@ rectangle Sample {
   usecase "Todo 3" as todo3
   
   ' action
-  ac1 -- (todo2)
+  ac1 -- todo2
 
   ' include / extends
-  (todo2) .> (todo1) : include
-  (todo3) .> (todo2) : extends
+  todo2 .> todo1 : include
+  todo3 .> todo2 : extends
 
   ' action
-  (todo2) -- ac2
+  todo2 -- ac2
 }
 
 @enduml
