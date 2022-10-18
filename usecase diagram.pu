@@ -1,0 +1,29 @@
+@startuml sample
+
+left to right direction
+skinparam packageStyle rectangle
+
+' actor
+actor "Actor 1" as ac1
+actor "Actor 2" as ac2
+
+' group
+rectangle Sample {
+
+  ' usecase 
+  usecase "Todo 1" as todo1
+  usecase "Todo 2" as todo2
+  usecase "Todo 3" as todo3
+  
+  ' action
+  ac1 -- (todo2)
+
+  ' include / extends
+  (todo2) .> (todo1) : include
+  (todo3) .> (todo2) : extends
+
+  ' action
+  (todo2) -- ac2
+}
+
+@enduml

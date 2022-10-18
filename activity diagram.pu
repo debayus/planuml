@@ -1,0 +1,33 @@
+@startuml sample
+
+partition Sample {
+
+  ' start
+  (*) --> "Todo \n2"
+
+  ' note
+  -->[note] "Todo 2"
+
+  ' arrow
+  -right-> "Right"
+
+  ' if
+  if "Some Test" then
+    --> "True"
+    --> ===B2===
+  else
+    --> "False"
+  endif
+
+  ' parallel start
+  ' --> ===B1===
+
+  ' parallel end
+  --> ===B2===
+
+  ' end
+  --> (*)
+
+}
+
+@enduml

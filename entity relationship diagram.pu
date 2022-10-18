@@ -1,0 +1,44 @@
+@startuml sample
+
+hide circle
+skinparam linetype ortho
+
+entity "User" as user {
+    *id : int <<auto>>
+    --
+    username : varchar(100)
+    password_hash : nvarchar(450)
+}
+
+entity "Customer" as customer {
+  *id : int <<auto>><<FK>>
+  --
+  name : varchar(100)
+  phone : varchar(100) : NULL
+}
+
+entity "Item" as item {
+  *id : int <<auto>>
+  --
+  name : varchar(100)
+  price : money
+}
+
+entity "CartItem" as cartitem {
+  *id_customer : int <<FK>>
+  *id_item : int <<FK>>
+  --
+  qty : int 
+  other_details : text
+}
+
+user ||--o| customer
+customer ||--o{ cartitem
+cartitem }o--|| item
+
+@enduml
+
+' Zero or One	|o--
+' Exactly One	||--
+' Zero or Many	}o--
+' One or Many	}|--
