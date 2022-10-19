@@ -1,33 +1,29 @@
 @startuml sample
 
-partition Sample {
+|Actor 1|
 
-  ' start
-  (*) --> "Todo \n2"
+start
+:todo 1;
 
-  ' note
-  -->[note] "Todo 2"
+|Actor 2|
 
-  ' arrow
-  -right-> "Right"
+if (todo 2) then (yes)
+  :todo 2;
+elseif (todo 3) then (yes)
+  :Text 3;
+else (no)
+  :no;
+  stop
+endif
 
-  ' if
-  if "Some Test" then
-    --> "True"
-    --> ===B2===
-  else
-    --> "False"
-  endif
+|Actor 1|
 
-  ' parallel start
-  ' --> ===B1===
+fork
+  :fork 1;
+fork again
+  :fork 2;
+end fork
 
-  ' parallel end
-  --> ===B2===
-
-  ' end
-  --> (*)
-
-}
+stop
 
 @enduml
