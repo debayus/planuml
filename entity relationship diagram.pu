@@ -11,7 +11,7 @@ entity "User" as user {
 }
 
 entity "Customer" as customer {
-  *id : int <<auto>><<FK>>
+  *id : int <<FK>>
   --
   name : varchar(100)
   phone : varchar(100) : NULL
@@ -28,8 +28,7 @@ entity "CartItem" as cartitem {
   *id_customer : int <<FK>>
   *id_item : int <<FK>>
   --
-  qty : int 
-  other_details : text
+  qty : int
 }
 
 user ||--o| customer
